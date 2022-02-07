@@ -1,30 +1,21 @@
-var vbtiniciar ;
-var vbola ;
-var vcpu ;
-var vjogador ;
-var vpaineltxtpoints ;
+//Elements
+var btnStart , bol , cpu , player , pointsPlayer1 , pointsPlayer2 ;
 
-//animação
-var games , frames ;
+//Animation Control
+var game , start ;
 
-//posições
-var posbolax , posbolay ;
-var posjogadorx , posjogadory ;
-var poscpux , poscpuy ;
+//Positions
+var posBolX , posBolY , posPlayer1Y , posPlayer2Y ;
 
-//direções
-var dirJy ;
+//Default Positions
+var defPlayer1Y = 50 + '%' , defPlayer2Y = 50 + '%' , defBolX = 50 + '%', defBolY = 50 + '%';
 
-//posições iniciais
-var posjoginiy = 50 + '%',poscpuinity = 50 + '%',posbolainitx = 50 + '%',posbolainity = 50 + '%';
+//Directions
+var dirPlayer1 ;
+var bolX , bolY ;
 
-//direção
-var bolay,bolax ; 
-var jogy,cpuy ;
+//Velocity
+var velBol , velPlayer1 , velPlayer2 ;
 
-//velocidade 
-var vbola,vcpu,vjogador ;
-
-//controle 
-var pontos = 0 ;
-var tecla ;
+//Controls
+var key ;
