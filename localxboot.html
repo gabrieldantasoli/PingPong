@@ -8,25 +8,24 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
-<body onload="whatmode()">
+<body>
     <header class="header">
-        <a href="https://github.com/gabrieldantasoli" rel="nofollow" target="_blank"><i class="fas fa-table-tennis"></i>Ping Pong</a>
-        <a href="https://github.com/gabrieldantasoli" rel="nofollow" target="_blank"><i class="fab fa-github"></i></a>
+        <h2><i class="fas fa-table-tennis"></i>Ping Pong</h2>
+        <i class="fab fa-github"></i>
     </header>
+    
+    <section id="game">
+        <div id="table">
+            <div id="bol"></div>
+            <div id="player1"></div>
+            <div id="player2"></div>
+            <div id="mark1"></div>
+            <div id="mark2"></div>
+            <div id="mark3"></div>
+        </div>
+    </section>
 
-    <div id="choose">
-        <div id="gamemode">
-            <p>Game Mode</p>
-        </div>
-        <div id="chooses">
-            <input type="radio" name="ping" id="localxboot" checked>
-            <label for="localxboot" class="mode">Local x Boot</label>
-            <input type="radio" name="ping" id="localx2">
-            <label for="localx2" class="mode">Local x 2</label>
-            <button id="start" onclick="changepage()">Start</button>
-        </div>
-        
-    </div>
+    <button id="sacar">Play</button>
 
     <footer>
         <p>Created by : <a href="https://github.com/gabrieldantasoli" rel="nofollow" target="_blank">Gabriel Dantas</a></p>

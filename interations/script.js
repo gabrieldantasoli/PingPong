@@ -48,7 +48,6 @@ function controlbol() {
         posPlayer2Y = defPlayer2Y ;
         pointsPlayer1 += 1 ;
         //update points
-        setTimeout(startGame,2000) ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -60,7 +59,6 @@ function controlbol() {
         posPlayer2Y = defPlayer2Y ;
         pointsPlayer2 += 1 ;
         //update points
-        setTimeout(startGame,2000) ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -142,7 +140,7 @@ function startGame() {
 
 function start() {
     pointsPlayer1 = pointsPlayer2 = 0 ;
-    btnStart = document.getElementById('btnStart') ;
+    btnStart = document.getElementById('sacar') ;
     btnStart.addEventListener('click',startGame) ;
     bol = document.getElementById('bol') ;
     player1 = document.getElementById('player1') ;
@@ -164,3 +162,31 @@ function start() {
         }
     }) ; 
 } ;
+
+function changepage() {
+    let inpts = document.querySelectorAll('#chooses input') ;
+    if (inpts[0].checked) {
+        window.location.href = 'localxboot.html' ;
+    }else if (inpts[1].checked) {
+        window.alert('Sorry , this mode is in development . :(')
+    }else{
+        window.alert('Choose an option !')
+    }
+} ;
+
+function whatmode() {
+    let inpts = document.querySelectorAll('#chooses input') ;
+    let lbls = document.querySelectorAll('#chooses label') ;
+    lbls.forEach(item => item.classList.remove('active')) ;
+    if (inpts[0].checked) {
+        lbls[0].classList.add('active') ;
+    }else if (inpts[1].checked) {
+        lbls[1].classList.add('active') ;
+    }
+} ;
+
+document.querySelectorAll('#chooses input').forEach(item => {
+    item.addEventListener('click',whatmode)
+}) ;
+
+start() ;

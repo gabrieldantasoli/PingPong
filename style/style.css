@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
 :root{
     --black: #000;
     --blue: #00f;
@@ -7,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: oswald,sans-serif;
 }
 
 html{
@@ -18,6 +21,7 @@ body{
 
 #table{
     margin: auto;
+    margin-top: 1rem;
     position: relative;
     width: 90vw;
     max-width: 700px;
@@ -80,4 +84,81 @@ body{
     top: 50%;right: 1%;
     transform: translateY(-50%);
     z-index: 999;
+}
+.header{
+    background-color: rgba(0, 0, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 3rem;
+}
+.header *{
+    color: #00f;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+.fa-table-tennis{
+    margin-right: 1rem;
+}
+footer{
+    position: fixed;
+    bottom: 0;left: 0;right: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.3);
+    padding: 0.5rem 0;
+}
+footer *{
+    color: #00f;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+#choose{
+    width: 90vw;
+    max-width: 500px;   
+    margin: auto;
+    margin-top: 1rem;
+}
+#gamemode{
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 255, 0.3);
+    color: #00f;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 2rem 2rem 0 0;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+#chooses{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 0 0 2rem 2rem;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+#chooses input{
+    display: none;
+}
+#chooses button{
+    color: #00f;
+    padding: .2rem .6rem;
+    border: 2px solid #00f;
+    font-size: 2rem;
+    margin: .5rem auto;
+}
+#chooses label{
+    font-size: 2rem;
+    padding: .5rem;
+    margin: 0.3rem auto;
+    min-width: 200px;
+}
+#chooses label.active{
+    color: #00f;
+    border: 2px solid #00f;
 }
