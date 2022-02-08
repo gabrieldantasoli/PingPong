@@ -25,16 +25,44 @@ function controlbol() {
     posBolX += velBol*bolX ;
     posBolY += velBol*bolY ;
 
-    //player colision
+    //players colision
     if((posBolX <= 5) && ((posBolY + 5 >= posPlayer1Y - 10) && (posBolY - 5 <= posPlayer1Y + 10))) {
         bolY = (posBolY-posPlayer1Y)/12
         bolX *= -1 ; 
     }else if((posBolX >= 95) && ((posBolY + 5 >= posPlayer2Y - 10) && (posBolY - 5 <= posPlayer2Y + 10))) {
         bolY = (posBolY-posPlayer2Y)/12
-        bolX *= -1 ; 
+        bolX *= -1 ;
     } ;
 
-    //cpu colision
+    //wall colisions
+    if (posBolY + 5 >= 100 || posBolY - 5 <= 0){
+        bolY *= -1 ;
+    }
+
+    //leave colisions 
+    if (posBolX - 2.5 >= 100 ){
+        velBol = 0 ;
+        posBolX = defBolX ;
+        posBolY = defBolY ;
+        posPlayer1Y = defPlayer1Y ;
+        posPlayer2Y = defPlayer2Y ;
+        pointsPlayer1 += 1 ;
+        //update points
+        playing = false ;
+        player1.style.top = posPlayer1Y + '%' ;
+        player2.style.top = posPlayer2Y + '%' ;
+    }else if (posBolX + 2.5 <= 0) {
+        velBol = 0 ;
+        posBolX = defBolX ;
+        posBolY = defBolY ;
+        posPlayer1Y = defPlayer1Y ;
+        posPlayer2Y = defPlayer2Y ;
+        pointsPlayer2 += 1 ;
+        //update points
+        playing = false ;
+        player1.style.top = posPlayer1Y + '%' ;
+        player2.style.top = posPlayer2Y + '%' ;
+    }
 
 
     bol.style.top = posBolY + '%';
@@ -71,6 +99,7 @@ function startGame() {
         }else{
             bolX = -1 ;
         } ;
+        velBol = velPlayer1 = velPlayer2 = 1 ;
         playing = true ;
         dirPlayer1 = 0 ;
         posBolX = defBolX ;
@@ -84,6 +113,7 @@ function startGame() {
 } ;
 
 function start() {
+    pointsPlayer1 = pointsPlayer2 = 0 ;
     velBol = velPlayer1 = velPlayer2 = 1 ;
     btnStart = document.getElementById('btnStart') ;
     btnStart.addEventListener('click',startGame) ;

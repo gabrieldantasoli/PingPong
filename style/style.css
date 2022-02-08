@@ -9,6 +9,13 @@
     box-sizing: border-box;
 }
 
+html{
+    overflow-x: hidden;
+}
+body{
+    overflow-x: hidden;
+}
+
 #table{
     margin: auto;
     position: relative;
