@@ -48,6 +48,7 @@ function controlbol() {
         posPlayer2Y = defPlayer2Y ;
         pointsPlayer1 += 1 ;
         //update points
+        document.getElementById('pointsplayer1').innerHTML = pointsPlayer1 ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -59,6 +60,7 @@ function controlbol() {
         posPlayer2Y = defPlayer2Y ;
         pointsPlayer2 += 1 ;
         //update points
+        document.getElementById('pointsplayer2').innerHTML = pointsPlayer2 ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -190,3 +192,5 @@ document.querySelectorAll('#chooses input').forEach(item => {
 }) ;
 
 start() ;
+
+//fa-mobile-alt
