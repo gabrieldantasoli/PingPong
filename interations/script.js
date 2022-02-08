@@ -49,6 +49,7 @@ function controlbol() {
         pointsPlayer1 += 1 ;
         //update points
         document.getElementById('pointsplayer1').innerHTML = pointsPlayer1 ;
+        document.getElementById('sacar').style.display = 'block' ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -61,6 +62,7 @@ function controlbol() {
         pointsPlayer2 += 1 ;
         //update points
         document.getElementById('pointsplayer2').innerHTML = pointsPlayer2 ;
+        document.getElementById('sacar').style.display = 'block' ;
         playing = false ;
         player1.style.top = posPlayer1Y + '%' ;
         player2.style.top = posPlayer2Y + '%' ;
@@ -119,6 +121,7 @@ function game() {
 
 function startGame() {
     if (!playing) {
+        document.getElementById('sacar').style.display = 'none' ;
         cancelAnimationFrame(frames) ;
         bolY = 0 ;
         if (Math.random()*10 > 5) {
@@ -147,13 +150,8 @@ function start() {
     bol = document.getElementById('bol') ;
     player1 = document.getElementById('player1') ;
     player2 = document.getElementById('player2') ;
-    document.addEventListener('keyup',function(event) {
-        key = event.keyCode ;
-        if (key == 38) {
-            dirPlayer1 = 0 ;
-        }else if (key == 40) {
-            dirPlayer1 = 0 ;
-        }
+    document.addEventListener('keyup',function() {
+        dirPlayer1 = 0 ;
     }) ; 
     document.addEventListener('keydown',function(event) {
         key = event.keyCode ;
@@ -162,6 +160,17 @@ function start() {
         }else if (key == 40) {
             dirPlayer1 = 1 ;
         }
+    }) ; 
+    document.querySelector('.arrows').addEventListener('touchstart',function(event) {
+        key = event.target.classList ;
+        if (key == 'fas fa-arrow-up') {
+            dirPlayer1 = -1 ;
+        }else if (key == 'fas fa-arrow-down') {
+            dirPlayer1 = 1 ;
+        }
+    }) ;
+    document.addEventListener('touchend',function() {
+        dirPlayer1 = 0 ;
     }) ; 
 } ;
 
@@ -193,4 +202,13 @@ document.querySelectorAll('#chooses input').forEach(item => {
 
 start() ;
 
-//fa-mobile-alt
+var wiwidth = document.getElementById('wiwidth') ;
+wiwidth.addEventListener('click',function(e) {
+    let controls = document.getElementById('controls') ;
+    if (e.target.classList[1] == 'fa-desktop') {
+        wiwidth.classList = 'fas fa-mobile-alt' ;
+    }else if (e.target.classList[1] == 'fa-mobile-alt') {
+        wiwidth.classList = 'fas fa-desktop' ;
+    } ;
+    controls.classList.toggle('active') ;
+}) ;
