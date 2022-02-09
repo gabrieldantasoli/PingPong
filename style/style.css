@@ -213,6 +213,7 @@ footer *{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 }
 #controls.active #sacar{
     transform: translateY(-200%);

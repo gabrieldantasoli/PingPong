@@ -197,14 +197,16 @@ function start() {
             dirPlayer1 = 1 ;
         }
     }) ;
-    document.querySelectorAll('.arrows')[1].addEventListener('touchstart',function(event) {
-        key = event.target.classList ; 
-        if (key == 'fas twoplayer2 fa-arrow-up') {
-            dirPlayer2 = -1 ;
-        }else if (key == 'fas twoplayer2 fa-arrow-down') {
-            dirPlayer2 = 1 ;
-        }
-    }) ;
+    if (document.querySelector('body').getAttribute('data-game') == 'players') {
+        document.querySelectorAll('.arrows')[1].addEventListener('touchstart',function(event) {
+            key = event.target.classList ; 
+            if (key == 'fas twoplayer2 fa-arrow-up') {
+                dirPlayer2 = -1 ;
+            }else if (key == 'fas twoplayer2 fa-arrow-down') {
+                dirPlayer2 = 1 ;
+            }
+        }) ;
+    } ;
     document.querySelector('.oneplayer1.fa-arrow-up').addEventListener('touchend',function() {
         dirPlayer1 = 0 ;
     }) ; 
