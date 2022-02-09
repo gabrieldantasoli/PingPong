@@ -203,6 +203,51 @@ footer *{
     color: #00f;
     border: 2px solid #000;
 }
+.desktop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    margin: 1rem auto;
+}
+#howtoplay > p{
+    width: 80%;
+    max-width: 500px;
+    margin: 1rem auto;
+    font-size: 1.4rem;
+}
+#howtoplay > h2{
+    text-align: center;
+    color: #00f;
+    width: 250px;
+    margin: .5rem 0 .5rem 1rem;
+    margin: auto;
+    border-bottom: 2px solid rgba(0, 0, 255, 0.3);
+}
+.ar{
+    display: flex;
+}
+.ar i{
+    margin: .2rem;
+}
+.desktop p{
+    max-width: 500px;    
+    width: 70%;
+    margin-left: 1rem;
+}
+.desktop i{
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0, 0, 255, 0.3);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #00f;
+    border: 2px solid #000;
+}
 #sacar{
     color: #00f;
     font-size: 2rem;
@@ -245,6 +290,81 @@ footer *{
     align-items: center;
     margin: .5rem auto;
 }
+#htp{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1rem;
+    color: #00f;
+    text-decoration: none;
+    padding: .5rem;
+    border: 2px solid blue;
+    font-size: 1.5rem;
+}
+#grid{
+    margin: auto;
+    display: grid;
+    width: 600px;
+    max-width: 90%;
+    grid-template-areas: 'a b c' 'd e f' 'd g h' 'i j k' 'i l m';
+    gap: .2rem;
+}
+#grid div{
+    background-color: rgba(0, 0, 255, 0.3);
+    text-align: center;
+    font-size: 1.4rem;
+}
+#grid .pcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00f;
+    color: white;
+}
+#grid div:nth-child(1){
+    grid-area: a;
+}
+#grid div:nth-child(2){
+    grid-area: b;
+}
+#grid div:nth-child(3){
+    grid-area: c;
+}
+#grid div:nth-child(4){
+    grid-area: d;
+}
+#grid div:nth-child(5){
+    grid-area: e;
+}
+#grid div:nth-child(6){
+    grid-area: f;
+}
+#grid div:nth-child(7){
+    grid-area: g;
+}
+#grid div:nth-child(8){
+    grid-area: h;
+}
+#grid div:nth-child(9){
+    grid-area: i;
+}
+#grid div:nth-child(10){
+    grid-area: j;
+}
+#grid div:nth-child(11){
+    grid-area: k;
+}
+#grid div:nth-child(12){
+    grid-area: l;
+}
+#grid div:nth-child(13){
+    grid-area: m;
+}
+#htp:hover{
+    color: white;
+    background-color: #00f;
+}
+
 @media (max-width:600px) and (max-height: 600px){
     #controls.active #sacar{
         transform: translateY(0);
