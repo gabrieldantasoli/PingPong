@@ -11,7 +11,7 @@ var posBolX , posBolY , posPlayer1Y , posPlayer2Y ;
 var defPlayer1Y = 50 , defPlayer2Y = 50 , defBolX = 50 , defBolY = 50 ;
 
 //Directions
-var dirPlayer1 ;
+var dirPlayer1 , dirPlayer2 ;
 var bolX , bolY ;
 
 //Velocity
@@ -73,7 +73,7 @@ function controlbol() {
     bol.style.left = posBolX + '%';
 } ;
 
-function controlplayer2() {
+function controlboot() {
     if (playing) {
         if (posBolX > 50 && bolX > 0) {
             if (posBolY > posPlayer2Y) {
@@ -98,6 +98,18 @@ function controlplayer2() {
     } ;
 } ;
 
+function player2Control() {
+    if (playing) {
+        posPlayer2Y += velPlayer2*dirPlayer2 ;
+        if (posPlayer2Y >= 90) {
+            posPlayer2Y = 90 ;
+        }else if (posPlayer2Y <= 10) {
+            posPlayer2Y = 10 ;
+        } ;
+        player2.style.top = posPlayer2Y + '%';
+    } ;
+} ;
+
 function player1Control() {
     if (playing) {
         posPlayer1Y += velPlayer1*dirPlayer1 ;
@@ -114,7 +126,13 @@ function game() {
     if (playing) {
         player1Control() ;
         controlbol() ;
-        controlplayer2() ;
+        let game = document.querySelector('body').getAttribute('data-game') ;
+        if (game == 'boot') {
+            controlboot() ;
+        }else if (game = 'players') {
+            player2Control() ;
+        } ;
+        
     } ; 
     frames = requestAnimationFrame(game) ;
 } ; 
@@ -132,7 +150,8 @@ function startGame() {
         velBol = 1.1 ; 
         velPlayer1 = velPlayer2 = 1 ;
         playing = true ;
-        dirPlayer1 = 0 ;
+        dirPlayer1  = 0 ;
+        dirPlayer2 = 0 ;
         posBolX = defBolX ;
         posBolY = defBolY ;
         posPlayer1Y = defPlayer1Y + '%';
@@ -152,6 +171,7 @@ function start() {
     player2 = document.getElementById('player2') ;
     document.addEventListener('keyup',function() {
         dirPlayer1 = 0 ;
+        dirPlayer2 = 0 ;
     }) ; 
     document.addEventListener('keydown',function(event) {
         key = event.keyCode ;
@@ -160,18 +180,45 @@ function start() {
         }else if (key == 40) {
             dirPlayer1 = 1 ;
         }
+        if (key == 81) {
+            dirPlayer2 = -1 ;
+        }else if (key == 65) {
+            dirPlayer2 = 1 ;
+        }
+        if (key == 83) {
+            startGame() ;
+        } ;
     }) ; 
-    document.querySelector('.arrows').addEventListener('touchstart',function(event) {
+    document.querySelectorAll('.arrows')[0].addEventListener('touchstart',function(event) {
         key = event.target.classList ;
-        if (key == 'fas fa-arrow-up') {
+        if (key == 'fas oneplayer1 fa-arrow-up') {
             dirPlayer1 = -1 ;
-        }else if (key == 'fas fa-arrow-down') {
+        }else if (key == 'fas oneplayer1 fa-arrow-down') {
             dirPlayer1 = 1 ;
         }
     }) ;
-    document.addEventListener('touchend',function() {
+    document.querySelectorAll('.arrows')[1].addEventListener('touchstart',function(event) {
+        key = event.target.classList ; 
+        if (key == 'fas twoplayer2 fa-arrow-up') {
+            dirPlayer2 = -1 ;
+        }else if (key == 'fas twoplayer2 fa-arrow-down') {
+            dirPlayer2 = 1 ;
+        }
+    }) ;
+    document.querySelector('.oneplayer1.fa-arrow-up').addEventListener('touchend',function() {
         dirPlayer1 = 0 ;
     }) ; 
+    document.querySelector('.oneplayer1.fa-arrow-down').addEventListener('touchend',function() {
+        dirPlayer1 = 0 ;
+    }) ; 
+    if (document.querySelector('body').getAttribute('data-game') == 'players') {
+        document.querySelector('.fas.twoplayer2.fa-arrow-up').addEventListener('touchend',function() {
+            dirPlayer2 = 0 ;
+        }) ; 
+        document.querySelector('.fas.twoplayer2.fa-arrow-down').addEventListener('touchend',function() {
+            dirPlayer2 = 0 ;
+        }) ; 
+    } ;
 } ;
 
 function changepage() {
@@ -179,7 +226,7 @@ function changepage() {
     if (inpts[0].checked) {
         window.location.href = 'localxboot.html' ;
     }else if (inpts[1].checked) {
-        window.alert('Sorry , this mode is in development . :(')
+        window.location.href = 'localx2.html' ;
     }else{
         window.alert('Choose an option !')
     }
@@ -211,4 +258,4 @@ wiwidth.addEventListener('click',function(e) {
         wiwidth.classList = 'fas fa-desktop' ;
     } ;
     controls.classList.toggle('active') ;
-}) ;
+}) ; 
